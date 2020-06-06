@@ -1,0 +1,30 @@
+@import '../style/utils.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  input {
+    width: 300px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    font-size: 1.5rem;
+    color: $black;
+  }
+  ::placeholder {
+    color: $black;
+    font-size: small;
+  }
+}
+
+.title:hover {
+  border-bottom: 1px solid $black;
+}
