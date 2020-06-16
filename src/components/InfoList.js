@@ -3,7 +3,7 @@ import React from 'react';
 function Memo({ memo }) {
   return (
     <div>
-      <b>{memo.title}</b> <span>({memo.date})</span>
+      <b>{memo.title}</b> <span>{memo.category}</span>
       <div>{memo.content}</div>
     </div>
   );

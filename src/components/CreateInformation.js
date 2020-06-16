@@ -2,16 +2,39 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './CreateInformation.scss';
 import './Button.scss';
+import axios from 'axios';
+import { useState } from 'react';
 
 // 여기서 추가 하면 어떻게 Main.js로 데이터가 넘어갈 것인가?
-const CreateInformation = ({
-  nameInput,
-  onChange,
-  title,
-  date,
-  content,
-  onCreate,
-}) => {
+const CreateInformation = () => {
+  const [inputs, setInput] = useState({
+    title: '',
+    category: '',
+    content: '',
+  });
+
+  const { title, category, content } = inputs;
+  const onChange = (e) => {
+    setInput({ ...inputs, [e.target.name]: e.target.value });
+  };
+
+  const EnrollPost = () => {
+    /*console.log("props", props.title);*/
+    axios
+      .put('http://localhost:3001/create', {
+        /*body: JSON.stringify(props)*/
+        title: inputs.title,
+        category: inputs.category,
+        content: inputs.content,
+      })
+      .then((response) => {
+        console.log('res', response);
+      })
+      .catch((error) => {
+        console.log('err', error);
+      });
+  };
+
   return (
     <div>
       <form>
@@ -21,14 +44,13 @@ const CreateInformation = ({
           placeholder="제목을 입력하세요"
           onChange={onChange}
           value={title}
-          ref={nameInput}
         />
         <input
-          className="date"
-          name="date"
-          placeholder="날짜를 입력하세요"
+          className="category"
+          name="category"
+          placeholder="카테고리를 입력하세요"
           onChange={onChange}
-          value={date}
+          value={category}
         />
         <input
           className="content"
@@ -39,7 +61,7 @@ const CreateInformation = ({
         />
       </form>
       <Link to="/">
-        <button className="button" onClick={onCreate}>
+        <button className="button" onClick={EnrollPost}>
           추가
         </button>
       </Link>
