@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      texts: null,
+      texts: '',
     };
   }
 
@@ -20,7 +20,7 @@ class App extends React.Component {
     //   .then((data) => this.setState({ username: data.username }));
     axios
       .get('http://localhost:3001/list', {
-        id: 2,
+        nickname: '은지님',
       })
       .then((response) => {
         this.setState({
@@ -36,9 +36,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           {this.state.texts ? this.state.texts.title : 'Hello World'}
-        </header>
+        </header> */}
         <Route exact={true} path="/" component={Main} />
         <Route path="/createinformation" component={CreateInformation} />
       </div>

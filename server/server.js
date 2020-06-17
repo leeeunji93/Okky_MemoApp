@@ -1,38 +1,3 @@
-// const express = require('express'); //express 쓰겠다
-// const app = express(); //express를 app에 넣기
-// const cors = require('cors'); //같은 브라우저 내에 충동방지
-// const mysql = require('mysql');
-// const dbconfig = require('./database.js'); //db가져오겠다
-// const connection = mysql.createConnection(dbconfig);
-// const bodyParser = require('body-parser'); //json에 있는 데이터 추출해요 여기서 json은 다 객체로 추출댐
-// const port = process.env.PORT || 3001; //포트 번호 설정
-
-// app.use(cors());
-
-// app.use(bodyParser.json());
-// // req => 요청한 정보 res => 담은 정보를 브라우저에 뿌려주는다
-// // app.use('/api', (req, res) => res.json({ username: 'bryan' })); //api 포트번호 뒤에 붙는걸 명시하는거임
-
-// app.listen(port, () => {
-//   console.log(`express is running on ${port}`);
-// });
-
-// app.post('/get', function (req, res) {
-//   var id = req.body.id;
-//   console.log('hi');
-//   connection.query('SELECT * FROM MEMO WHERE ID = ?', [id], function (
-//     err,
-//     rows,
-//     field,
-//   ) {
-//     if (!err) {
-//       res.send(rows);
-//     } else {
-//       console.log('Error', err);
-//     }
-//   });
-// });
-
 var express = require('express');
 var mysql = require('mysql');
 var dbconfig = require('./database.js');
@@ -74,7 +39,7 @@ app.get('/list', function (req, res) {
   connection.query('SELECT * FROM memo', function (err, rows, field) {
     if (!err) {
       /*console.log("rows", rows);*/
-      res.send(rows);
+      res.send(rows); //id, title, cate...
     } else {
       console.log('Error while performing Query.', err);
     }
@@ -98,7 +63,7 @@ app.post('/get', function (req, res) {
 
 app.delete('/delete', function (req, res) {
   var id = req.body.id;
-  /*console.log("데이터", id);*/
+  console.log('데이터', req);
   connection.query('DELETE FROM MEMO WHERE ID=(?)', id, function (
     err,
     rows,

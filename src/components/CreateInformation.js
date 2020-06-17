@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './CreateInformation.scss';
-import './Button.scss';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -36,8 +35,9 @@ const CreateInformation = () => {
   };
 
   return (
-    <div>
+    <div className="form_wrapper">
       <form>
+        <p>Check Memo</p>
         <input
           className="title"
           name="title"

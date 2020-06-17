@@ -1,0 +1,40 @@
+@import '../style/utils.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.memos {
+  padding: 1rem;
+  width: 500px;
+  height: 100vh;
+  margin: 20px auto;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+    p {
+      text-align: center;
+      font-weight: 600;
+      font-size: 40px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.plus {
+  text-decoration: none;
+  outline: none;
+  color: $black;
+  margin-top: 15px;
+}
+
+// AddCircleIcon {
+//   text-decoration: none;
+// }

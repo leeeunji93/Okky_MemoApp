@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import InfoList from './InfoList';
 import { Link } from 'react-router-dom';
-import AddCircleOutlineRoundedIcon from '@material-ui/icons/AddCircleOutlineRounded';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { useEffect } from 'react';
 import axios from 'axios';
+import './Main.scss';
 
 function Main() {
   const [memos, setMemos] = useState([]);
@@ -24,11 +25,14 @@ function Main() {
   }, []);
 
   return (
-    <div>
+    <div className="memos">
+      <div className="title">
+        <p>Memo App </p>
+        <Link to="/CreateInformation" className="plus">
+          <AddCircleIcon />
+        </Link>
+      </div>
       <InfoList memos={memos} />
-      <Link to="/CreateInformation">
-        <AddCircleOutlineRoundedIcon />
-      </Link>
     </div>
   );
 }
